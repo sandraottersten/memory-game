@@ -1,0 +1,88 @@
+*,
+*::before,
+*::after {
+box-sizing: border-box;
+}
+
+body {
+margin: 0;
+background: #999b9c;
+}
+
+.grid {
+max-width: 960px;
+margin: 0 auto;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-evenly;
+}
+
+.card {
+margin: 5px;
+background-color: #999b9c;
+background-size: contain;
+background-repeat: no-repeat;
+background-position: center center;
+height: 150px;
+width: 150px;
+}
+
+#container_start {
+  background-image:url('img/background2vert.jpg');
+  background-repeat: no-repeat;
+  height: 800px;
+}
+#logo {
+  margin: auto;
+  padding: 60px 20px 20px 20px;
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+}
+.startpage_box {
+  background-color: white;
+  padding: 1em;
+  border-radius: 10px;
+  font-family: verdana;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+  margin: 25px;
+  opacity: 0.7;
+  line-height: 1.5;
+  max-width: 600px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+p {
+  padding: 10px;
+}
+button {
+  background-color: rgb(237, 97, 97);
+  font-size: 1.5em;
+  margin: 5px;
+  color: white;
+  padding: 20px;
+  font-weight: 600;
+  border-radius: 20px;
+  border: none;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+
+@media screen and (min-width: 480px) {
+ #container_start {
+   background-image:url('img/background_1200.jpg');
+ }
+}
+
+@media screen and (min-width: 768px) {
+ #container_start {
+   background-image:url('img/background_1200.jpg');
+}
+}

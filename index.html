@@ -5,72 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Memory Game</title>
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-     body {
-       background-image:url('img/background2vert.jpg');
-       background-repeat: no-repeat;
-     }
-     #logo {
-       width: 90%;
-       margin: auto;
-       padding: 50px 20px 20px 20px;
-     }
-     .startpage_box {
-       background-color: white;
-       padding: 1em;
-       border-radius: 10px;
-       font-family: verdana;
-       font-weight: bold;
-       font-size: 1.1em;
-       text-align: center;
-       margin: 1em;
-       opacity: 0.7;
-     }
-     p {
-       padding: 10px;
-     }
-     button {
-       background-color: rgb(237, 97, 97);
-       font-size: 1.5em;
-       margin: 5px;
-       color: white;
-       padding: 20px;
-       font-weight: 600;
-       border-radius: 20px;
-       border: none;
-       margin: auto;
-       display: flex;
-       justify-content: center;
-       margin-top: 40px;
-     }
-
-
-     @media screen and (min-width: 480px) {
-      body {
-        background-image:url('img/background1horiz.jpg');
-      }
-    }
-
-    @media screen and (min-width: 768px) {
-     body {
-       background-color: lightblue;
-     }
-   }
-
-    </style>
+    <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
-    <div id="container">
+    <div id="container_start">
       <img id="logo" src="img/logo.png" alt="donut mania">
-    </div>
+
     <div class="startpage_box">
       <p>Fancy a donut or two? <br> Open the pink boxes, find the matching pair and they're
         all yours. Clear the whole board and you'll be richly rewarded. But if you don't
         make it on time the cookie monster will have them all to himself.</p>
     </div>
     <button>Start game</button>
+    </div>
     <script src="script.js"></script>
+
   </body>
 </html>

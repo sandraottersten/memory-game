@@ -34,11 +34,11 @@ const cardsArray = [{
   // Grab the div with an id of root
 const game = document.getElementById('game');
 
-// Create a section with a class of grid
-const grid = document.createElement('section');
+// Create a div with a class of grid
+const grid = document.createElement('div');
 grid.setAttribute('class', 'grid');
 
-// Append the grid section to the game div
+// Append the grid div to the game div
 game.appendChild(grid);
 // Duplicate array to create a match for each card
 let gameGrid = cardsArray.concat(cardsArray);
@@ -52,7 +52,7 @@ gameGrid.forEach(item => {
   card.classList.add('card');
 
   // Set the data-name attribute of the div to the cardsArray name
-  card.dataset.name = item.name;
+  card.dataset.id = item.id;
 
   // Apply the background image of the div to the cardsArray image
   card.style.backgroundImage = `url(${item.img})`;
