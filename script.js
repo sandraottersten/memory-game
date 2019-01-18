@@ -35,6 +35,7 @@ let count = 0;
 let firstSelect = 0;
 let secondSelect = 0;
 let delay = 1100;
+var timeleft = 10;
 
 const game = document.getElementById('game'); // Grab the div with an id of root
 const grid = document.createElement('section'); // Create a section with a class of grid
@@ -47,22 +48,35 @@ gameGrid.forEach(item => {
   const card = document.createElement('div'); // Create a div for every itam in array
   card.classList.add('card'); // Apply a card class to that div
   card.dataset.id = item.id; // Set the data-name attribute of the div to the cardsArray name
-  card.style.backgroundImage = `url(${item.img})`; // Apply the background image of the div to the cardsArray image
+
+  const front = document.createElement('div');
+  front.classList.add('front');
+
+  const back = document.createElement('div');
+  back.classList.add('back');
+  back.style.backgroundImage = `url(${item.img})`; // Apply the background image of the div to the cardsArray image
+
   grid.appendChild(card); // Append the div to the grid section
+  card.appendChild(front); // Append the div to the grid section
+  card.appendChild(back); // Append the div to the grid section
 });
 
-
+timer()
 grid.addEventListener('click', function (event) {  // Add event listener to grid
   let clicked = event.target;    // The event target is our clicked item
   if (clicked.nodeName === 'SECTION') { return; }    // Do not allow the grid section itself to be selected; only select divs inside the grid
   if (count<2) {
     count++;
      if(count === 1) {
-       clicked.classList.add('selected'); // Add selected class
-       firstSelect = clicked.dataset.id   // Assign firstSelect
+
+       firstSelect = clicked.parentNode.dataset.id;   // Assign firstSelect
+       console.log('firstSelect')
+       clicked.parentNode.classList.add('selected'); // Add selected class
+
      } else {
-       clicked.classList.add('selected'); // Add selected class
-        secondSelect = clicked.dataset.id  // Assign secondSelect
+       secondSelect = clicked.parentNode.dataset.id; // Add selected class
+      console.log('secondSelect')
+       clicked.parentNode.classList.add('selected');  // Assign secondSelect
      }
      if (firstSelect && secondSelect) {
         if (firstSelect === secondSelect) {
@@ -93,6 +107,15 @@ grid.addEventListener('click', function (event) {  // Add event listener to grid
  });
    console.log("guess again")
  }
+
+ function timer() {
+   var downloadTimer = setInterval(function(){
+     timeleft--;
+     document.getElementById("countdowntimer").textContent = timeleft;
+     if(timeleft <= 0)
+    clearInterval(downloadTimer);
+},1000);
+ };
 
 
 
