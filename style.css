@@ -6,15 +6,28 @@ box-sizing: border-box;
 
 body {
 margin: 0;
-background: #999b9c;
+background: white;
 }
-
+#game {
+  width: 405px;
+  background: #999b9c;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.game_data {
+  background: rgb(246, 160, 189);
+  width: 100%;
+  height: 300px;
+  margin-top: 20px;
+}
 .grid {
 max-width: 960px;
 margin: 0 auto;
 display: flex;
 flex-wrap: wrap;
-justify-content: space-evenly;
+justify-content: center;
 }
 
 .card {
@@ -23,8 +36,8 @@ background-color: #999b9c;
 background-size: contain;
 background-repeat: no-repeat;
 background-position: center center;
-height: 150px;
-width: 150px;
+height: 90px;
+width: 90px;
 }
 
 #container_start {
@@ -56,6 +69,11 @@ width: 150px;
   display: flex;
   justify-content: center;
 }
+h2 {
+  color: white;
+  font-family: verdana;
+  text-align: center;
+}
 p {
   padding: 10px;
 }
@@ -73,16 +91,38 @@ button {
   justify-content: center;
   margin-top: 40px;
 }
+.selected {
+  border: 4px solid pink;
+}
+.match {
+  border: 4px solid red;
+  background-image: none !important;
+}
 
-
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 600px) {
  #container_start {
    background-image:url('img/background_1200.jpg');
  }
+ .card {
+   height: 120px;
+   width: 120px;
+ }
+ #game {
+   width: 530px;
+   background: #999b9c;
+ }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
  #container_start {
    background-image:url('img/background_1200.jpg');
+}
+.card {
+  height: 150px;
+  width: 150px;
+}
+#game {
+  width: 650px;
+  background: #999b9c;
 }
 }

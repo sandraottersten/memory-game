@@ -31,35 +31,71 @@ const cardsArray = [{
     'img': 'img/donut8.jpg',
   }];
 
-  // Grab the div with an id of root
-const game = document.getElementById('game');
+let count = 0;
+let firstSelect = 0;
+let secondSelect = 0;
+let delay = 1100;
 
-// Create a div with a class of grid
-const grid = document.createElement('div');
+const game = document.getElementById('game'); // Grab the div with an id of root
+const grid = document.createElement('section'); // Create a section with a class of grid
 grid.setAttribute('class', 'grid');
 
-// Append the grid div to the game div
-game.appendChild(grid);
-// Duplicate array to create a match for each card
-let gameGrid = cardsArray.concat(cardsArray);
+game.appendChild(grid); // Append the grid section to the game div
+let gameGrid = cardsArray.concat(cardsArray); // Duplicate array to create a match for each card
 
-// For each item in the cardsArray array...
 gameGrid.forEach(item => {
-  // Create a div
-  const card = document.createElement('div');
-
-  // Apply a card class to that div
-  card.classList.add('card');
-
-  // Set the data-name attribute of the div to the cardsArray name
-  card.dataset.id = item.id;
-
-  // Apply the background image of the div to the cardsArray image
-  card.style.backgroundImage = `url(${item.img})`;
-
-  // Append the div to the grid section
-  grid.appendChild(card);
+  const card = document.createElement('div'); // Create a div for every itam in array
+  card.classList.add('card'); // Apply a card class to that div
+  card.dataset.id = item.id; // Set the data-name attribute of the div to the cardsArray name
+  card.style.backgroundImage = `url(${item.img})`; // Apply the background image of the div to the cardsArray image
+  grid.appendChild(card); // Append the div to the grid section
 });
+
+
+grid.addEventListener('click', function (event) {  // Add event listener to grid
+  let clicked = event.target;    // The event target is our clicked item
+  if (clicked.nodeName === 'SECTION') { return; }    // Do not allow the grid section itself to be selected; only select divs inside the grid
+  if (count<2) {
+    count++;
+     if(count === 1) {
+       clicked.classList.add('selected'); // Add selected class
+       firstSelect = clicked.dataset.id   // Assign firstSelect
+     } else {
+       clicked.classList.add('selected'); // Add selected class
+        secondSelect = clicked.dataset.id  // Assign secondSelect
+     }
+     if (firstSelect && secondSelect) {
+        if (firstSelect === secondSelect) {
+        setTimeout(match, delay)
+        setTimeout(resetGuesses, delay)
+     } else {
+        setTimeout(resetGuesses, delay)
+     }
+    }
+  }
+ });
+
+ function match() {
+   var selected = document.querySelectorAll('.selected');
+   selected.forEach(card => {
+   card.classList.add('match');
+ });
+   console.log("it'a match")
+ };
+
+ function resetGuesses() {
+  count = 0;
+   firstSelect = 0;
+   secondSelect = 0;
+   var selected = document.querySelectorAll('.selected');
+   selected.forEach(card => {
+     card.classList.remove('selected');
+ });
+   console.log("guess again")
+ }
+
+
+
 
 
 /*
