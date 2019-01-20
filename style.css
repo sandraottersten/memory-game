@@ -19,7 +19,7 @@ background: white;
 .game_data {
   background: rgb(246, 160, 189);
   width: 100%;
-  height: 300px;
+  height: 350px;
 }
 .grid {
 max-width: 960px;
@@ -50,6 +50,7 @@ transform-style: preserve-3d;
 .front {
   position: absolute;
   backface-visibility: hidden;
+
 }
 .front {
   background: #FAB942 url('img/box.jpg') no-repeat center center / contain;
@@ -60,6 +61,7 @@ transform-style: preserve-3d;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
+  border: 2px solid pink;
 }
 .selected {
   transform: rotateY(180deg);
@@ -67,6 +69,7 @@ transform-style: preserve-3d;
 
 .match .front {
   background: white !important;
+
 }
 .column {
   flex: 100%;
@@ -105,6 +108,7 @@ h2 {
   color: white;
   font-family: verdana;
   text-align: center;
+  margin: 0;
 }
 p {
   padding: 10px;
@@ -130,7 +134,38 @@ button:hover {
 a {
   text-decoration: none;
 }
+#timer {
 
+}
+#loss {
+  display: none;
+  height: 405px;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+}
+#winner {
+  display: none;
+}
+#looser {
+  display: none;
+}
+#playagain {
+  display: none;
+}
+#animation {
+  display: none;
+  width: 100%;
+  height: 405px;
+  overflow: hidden;
+  position: relative;
+}
+.SnowExample {
+position: absolute; top: -450px; text-align: center;
+animation: SnowExampleSlide ease-in infinite;
+
+animation-fill-mode: forwards;}
+@keyframes SnowExampleSlide {from {position: absolute; top: -450px;} to {position: absolute; top: 1000px;}}
 
 @media screen and (min-width: 600px) {
  #container_start {
@@ -145,6 +180,16 @@ a {
  #game {
    width: 530px;
    background: white;
+ }
+ #loss {
+   width: 100%;
+   height: 100vh;
+   background-size: cover;
+   background-position: center;
+ }
+ #animation {
+   width: 100%;
+   height: 520px;
  }
 }
 
@@ -172,15 +217,28 @@ a {
   margin: auto;
   display: flex;
   justify-content: center;
-  margin-top: 30px
+  margin-top: 10%;
+
+}
+#loss {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+#animation {
+  width: 100%;
+  height: 100vh;
 }
 .game_data {
   background: rgb(246, 160, 189);
   width: 100%;
-  height: 100%;
+  height: 100vh;
   float: left;
 }
 .container_game {
   display: flex;
   flex-wrap: wrap;
+}
 }

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      #animation {
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="animation" width="600" height="600"></canvas>
+  </body>
+  <script type="text/javascript">
+    var canvas = document.getElementById("animation");
+    width = 600;
+    height = 600;
+    var context = canvas.getContext("2d");
+    var img = new Image();
+    img.src = "img/donut1.jpg"
+    var number = 20;
+    var donuts = [];
+
+    for(let i=0; i<number; i++){
+        var x = Math.floor(Math.random()*width);
+        var y = Math.floor(Math.random()*height);
+      donuts[i] = new Donut(x,y);
+
+    }
+
+  function Donut(x,y) {
+    this.x = x;
+    this.y = y;
+
+    this.fall = function(){
+      this.y = this.y+1;
+      if(this.y > height){
+        this.y = 0;
+      }
+    }
+
+    this.show = function(){
+      context.drawImage(img,this.x, this.y, 200, 200);
+    }
+  }
+  function draw() {
+    context.fillStyle = "white";
+    context.fillRect(0,0,width,height);
+    for(let i=0; i<number; i++){
+      donuts[i].show();
+      donuts[i].fall();
+    }
+  };
+
+  function update() {
+    draw()
+    window.requestAnimationFrame(update);
+  };
+
+  update();
+
+  </script>
+</html>

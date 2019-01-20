@@ -35,7 +35,8 @@ let count = 0;
 let firstSelect = 0;
 let secondSelect = 0;
 let delay = 1100;
-var timeleft = 10;
+var timeleft = 30;
+
 
 const game = document.getElementById('game'); // Grab the div with an id of root
 const grid = document.createElement('section'); // Create a section with a class of grid
@@ -43,6 +44,7 @@ grid.setAttribute('class', 'grid');
 
 game.appendChild(grid); // Append the grid section to the game div
 let gameGrid = cardsArray.concat(cardsArray); // Duplicate array to create a match for each card
+var gameArray = gameGrid.length;
 
 gameGrid.forEach(item => {
   const card = document.createElement('div'); // Create a div for every itam in array
@@ -62,31 +64,40 @@ gameGrid.forEach(item => {
 });
 
 timer()
+
 grid.addEventListener('click', function (event) {  // Add event listener to grid
   let clicked = event.target;    // The event target is our clicked item
   if (clicked.nodeName === 'SECTION') { return; }    // Do not allow the grid section itself to be selected; only select divs inside the grid
   if (count<2) {
     count++;
      if(count === 1) {
-
        firstSelect = clicked.parentNode.dataset.id;   // Assign firstSelect
-       console.log('firstSelect')
-       clicked.parentNode.classList.add('selected'); // Add selected class
+       clicked.parentNode.classList.add('selected');
 
      } else {
        secondSelect = clicked.parentNode.dataset.id; // Add selected class
-      console.log('secondSelect')
        clicked.parentNode.classList.add('selected');  // Assign secondSelect
      }
      if (firstSelect && secondSelect) {
         if (firstSelect === secondSelect) {
         setTimeout(match, delay)
         setTimeout(resetGuesses, delay)
+        gameArray--;
+        gameArray--;
      } else {
         setTimeout(resetGuesses, delay)
      }
     }
   }
+  if (gameArray === 0) {
+    var downloadTimer = setInterval(function(){
+      document.getElementById("winner").style.display = "block";
+      game.style.display = "none";
+      document.getElementById("animation").style.display = "block";
+       document.getElementById("playagain").style.display = "block";
+  }, 2000)
+
+}
  });
 
  function match() {
@@ -94,8 +105,7 @@ grid.addEventListener('click', function (event) {  // Add event listener to grid
    selected.forEach(card => {
    card.classList.add('match');
  });
-   console.log("it'a match")
- };
+};
 
  function resetGuesses() {
   count = 0;
@@ -105,32 +115,22 @@ grid.addEventListener('click', function (event) {  // Add event listener to grid
    selected.forEach(card => {
      card.classList.remove('selected');
  });
-   console.log("guess again")
- }
+}
 
  function timer() {
    var downloadTimer = setInterval(function(){
      timeleft--;
      document.getElementById("countdowntimer").textContent = timeleft;
-     if(timeleft <= 0)
-    clearInterval(downloadTimer);
-},1000);
+     if(timeleft <= 0) {
+       const timer = document.getElementById('timer').style.display = "none";
+       clearInterval(downloadTimer);
+       game.style.display = "none";
+       document.getElementById("loss").style.display = "flex";
+       document.getElementById("looser").style.display = "block";
+       document.getElementById("playagain").style.display = "block";
+      }
+      if(gameArray === 0) {
+        clearInterval(downloadTimer);
+      }
+    },1000);
  };
-
-
-
-
-
-/*
-var arr = ['apple','cat','Adam','123','Zorro','petunia'];
-var n = arr.length;
-var tempArr = [];
-for ( var i = 0; i < n-1; i++ ) {
-  // The following line removes one random element from arr
-  // and pushes it onto tempArr
-  tempArr.push(arr.splice(Math.floor(Math.random()*arr.length),1)[0]);
-}
-// Push the remaining item onto tempArr
-tempArr.push(arr[0]);
-arr=tempArr;
-*/

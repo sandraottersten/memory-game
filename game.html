@@ -12,11 +12,34 @@
     <div class="container_game">
       <div class="column1">
       <div id="game"></div>
+      <div id="loss" style="background-image: url(img/monsterwon.jpg)"></div>
+      <div id="animation">
+        <img alt="donuts" src="img/donut5.png" class="SnowExample" style="width: 100px; -webkit-animation-delay: 0s;animation-delay: 0s; -webkit-animation-duration: 5s;animation-duration: 5s; left:70%; margin-left: -250px;" />
+        <img alt="donuts" src="img/donut6.png" class="SnowExample" style="width: 100px; -webkit-animation-delay: 2s;animation-delay: 2s; -webkit-animation-duration: 3s;animation-duration: 3s; left:80%; margin-left: -250px;" />
+        <img alt="donuts" src="img/donut7.png" class="SnowExample" style="width: 100px; -webkit-animation-delay: 0s;animation-delay: 0s; -webkit-animation-duration: 5s;animation-duration: 5s; left:90%; margin-left: -250px;" />
+        <img alt="donuts" src="img/donut3.png" class="SnowExample" style="width: 100px; -webkit-animation-delay: 1s;animation-delay: 1s; -webkit-animation-duration: 3s;animation-duration: 3s; left:40%; margin-left: -200px;" />
+        <img alt="donuts" src="img/donut4.png" class="SnowExample" style="width: 100px; -webkit-animation-delay: 0s;animation-delay: 0s; -webkit-animation-duration: 3s;animation-duration: 3s; left:90%; margin-left: -100px;" />
+        <img alt="donuts" src="img/donut5.png" class="SnowExample" style="width: 150px; -webkit-animation-delay: 0s;animation-delay: 0s; -webkit-animation-duration: 5s;animation-duration: 5s; left:70%; margin-left: -250px;" />
+        <img alt="donuts" src="img/donut6.png" class="SnowExample" style="width: 150px; -webkit-animation-delay: 2s;animation-delay: 2s; -webkit-animation-duration: 3s;animation-duration: 3s; left:50%; margin-left: -250px;" />
+        <img alt="donuts" src="img/donut7.png" class="SnowExample" style="width: 150px; -webkit-animation-delay: 3s;animation-delay: 3s; -webkit-animation-duration: 5s;animation-duration: 5s; left:80%; margin-left: -250px;" />
+        <img alt="donuts" src="img/donut8.png" class="SnowExample" style="width: 150px; -webkit-animation-delay: 2s;animation-delay: 2s; -webkit-animation-duration: 5s;animation-duration: 5s; left:80%; margin-left: -250px;" />
+        <img alt="donuts" src="img/donut8.png" class="SnowExample" style="width: 150px; -webkit-animation-delay: 0s;animation-delay: 1s; -webkit-animation-duration: 5s;animation-duration: 5s; left:50%; margin-left: -250px;" />
+        <img alt="donuts" src="img/donut1.png" class="SnowExample" style="width: 150px; -webkit-animation-delay: 1s;animation-delay: 1s;-webkit-animation-duration: 4s;animation-duration: 4s; left:70%; margin-left: -200px;" />
+        <img alt="donuts" src="img/donut2.png" class="SnowExample" style="width: 200px; -webkit-animation-delay: 2s;animation-delay: 2s;-webkit-animation-duration: 3s;animation-duration: 3s; left:80%; margin-left: -100px;" />
+        <img alt="donuts" src="img/donut1.png" class="SnowExample" style="width: 200px; -webkit-animation-delay: 0s;animation-delay: 0s;-webkit-animation-duration: 4s;animation-duration: 4s; left:90%; margin-left: -150px;" />
+        <img alt="donuts" src="img/donut2.png" class="SnowExample" style="width: 200px; -webkit-animation-delay: 1s;animation-delay: 1s;-webkit-animation-duration: 4s;animation-duration: 4s; left:50%; margin-left: -200px;" />
+        <img alt="donuts" src="img/donut3.png" class="SnowExample" style="width: 200px; -webkit-animation-delay: 2s;animation-delay: 2s; -webkit-animation-duration: 5s;animation-duration: 5s; left:70%; margin-left: -200px;" />
+        <img alt="donuts" src="img/donut4.png" class="SnowExample" style="width: 200px; -webkit-animation-delay: 3s;animation-delay: 3s; -webkit-animation-duration: 4s;animation-duration: 4s; left:50%; margin-left: -200px;" />
+
+      </div>
     </div>
     <div class="column2">
       <div class="game_data">
-        <h2>Time:<span id="countdowntimer">10 </span></h2>
+        <h2 id="winner">Congrats! They are all yours!</h2>
+        <h2 id="looser">Time is out <br>The cookie monster ate them all!</h2>
+        <h2 id="timer">Time:<span id="countdowntimer">10 </span></h2>
         <h2>Score:</h2>
+        <button id="playagain">Play again</button>
       </div>
       </div>
       <script src="script.js"></script>
