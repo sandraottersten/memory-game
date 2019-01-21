@@ -24,6 +24,7 @@ font-family: 'Yanone Kaffeesatz', sans-serif;
   height: 350px;
   border-top: 5px double grey;
   padding-top: 10px;
+  overflow: hidden;
 }
 .grid {
 max-width: 960px;
@@ -102,7 +103,7 @@ transform-style: preserve-3d;
   background-color: white;
   padding: 1em;
   border-radius: 10px;
-  font-size: 1.2em;
+  font-size: 1.5em;
   font-weight: bold;
   text-align: center;
   margin: 15px;
@@ -124,7 +125,7 @@ p {
 }
 button {
   background-color: rgb(237, 97, 97);
-  font-size: 1.5em;
+  font-size: 1.8em;
   margin: 5px;
   color: white;
   padding: 15px;
@@ -178,6 +179,31 @@ animation: SnowExampleSlide ease-in infinite;
 animation-fill-mode: forwards;}
 @keyframes SnowExampleSlide {from {position: absolute; top: -450px;} to {position: absolute; top: 1000px;}}
 
+#monster {
+  width: 300px;
+  height: 300px;
+}
+#monsterAnimation {
+  width: 100px;
+  height: 100px;
+  background-image:url('img/monster.png');
+  position: relative;
+  left: 50px;
+  bottom: -50px;
+  animation-duration: 4s;
+  animation-iteration-count: 1;
+}
+@keyframes example {
+  0%   {left:50px; bottom:-50px;}
+  40%  {left:50px; bottom:40px;}
+  50%  {left:50px; bottom:40px;}
+  60%  {left:50px; bottom:40px;}
+  100% {left:50px; bottom:-50px;}
+}
+
+
+
+
 @media screen and (min-width: 600px) {
  #container_start {
    background-image:url('img/background_1200.jpg');
@@ -212,7 +238,7 @@ animation-fill-mode: forwards;}
    background-image:url('img/background_1200.jpg');
 }
 button {
-  font-size: 1.7em;
+  font-size: 2em;
   margin: 5px;
   padding: 20px;
   font-weight: bold;
@@ -273,6 +299,7 @@ h2 {
   border-top: none;
   padding: 10px 50px 50px 50px;
   line-height: 1.2;
+  overflow: hidden;
 }
 .container_game {
   display: flex;
@@ -280,5 +307,26 @@ h2 {
 }
 .startpage_box {
   margin: auto;
+}
+#monster {
+  width: 400px;
+  height: 400px;
+}
+#monsterAnimation {
+  width: 100px;
+  height: 100px;
+  background-image:url('img/monster.png');
+  position: relative;
+  left: 200px;
+  bottom: -150px;
+  animation-duration: 4s;
+  animation-iteration-count: 1;
+}
+@keyframes example {
+  0%   {left:200px; bottom:-150px;}
+  40%  {left:150px; bottom:50px;}
+  50%  {left:150px; bottom:50px;}
+  60%  {left:150px; bottom:50px;}
+  100% {left:200px; bottom:-150px;}
 }
 }

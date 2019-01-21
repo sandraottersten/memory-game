@@ -96,6 +96,7 @@ grid.addEventListener('click', function (event) {  // Add event listener to grid
       game.style.display = "none";
       document.getElementById("animation").style.display = "block";
        document.getElementById("playagain").style.display = "block";
+      document.getElementById("monsterAnimation").style.display = "none";
   }, 1000)
 
 }
@@ -129,6 +130,9 @@ function score() {
    var downloadTimer = setInterval(function(){
      timeleft--;
      document.getElementById("countdowntimer").textContent = timeleft;
+     if(timeleft === 10) {
+       document.getElementById('monsterAnimation').style.animationName = "example";
+     }
      if(timeleft <= 0) {
        document.getElementById('timer').style.display = "none";
        clearInterval(downloadTimer);
@@ -136,6 +140,7 @@ function score() {
        document.getElementById("loss").style.display = "flex";
        document.getElementById("looser").style.display = "block";
        document.getElementById("playagain").style.display = "block";
+       document.getElementById("monsterAnimation").style.display = "none";
       }
       if(gameArray === 0) {
         clearInterval(downloadTimer);
