@@ -7,6 +7,7 @@ box-sizing: border-box;
 body {
 margin: 0;
 background: white;
+font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 #game {
   width: 405px;
@@ -15,11 +16,14 @@ background: white;
   display: flex;
   justify-content: center;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 .game_data {
   background: rgb(246, 160, 189);
   width: 100%;
   height: 350px;
+  border-top: 5px double grey;
+  padding-top: 10px;
 }
 .grid {
 max-width: 960px;
@@ -78,7 +82,10 @@ transform-style: preserve-3d;
 #container_start {
   background-image:url('img/background2vert.jpg');
   background-repeat: no-repeat;
-  height: 800px;
+  height: 100vh;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
 }
 #logo {
   margin: auto;
@@ -88,15 +95,17 @@ transform-style: preserve-3d;
   max-width: 100%;
   height: auto;
 }
+#logogame {
+  display: none;
+}
 .startpage_box {
   background-color: white;
   padding: 1em;
   border-radius: 10px;
-  font-family: verdana;
+  font-size: 1.2em;
   font-weight: bold;
-  font-size: 1em;
   text-align: center;
-  margin: 25px;
+  margin: 15px;
   opacity: 0.7;
   line-height: 1.5;
   max-width: 600px;
@@ -106,9 +115,9 @@ transform-style: preserve-3d;
 }
 h2 {
   color: white;
-  font-family: verdana;
   text-align: center;
   margin: 0;
+  font-size: 2em;
 }
 p {
   padding: 10px;
@@ -118,14 +127,15 @@ button {
   font-size: 1.5em;
   margin: 5px;
   color: white;
-  padding: 20px;
-  font-weight: 600;
+  padding: 15px;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: bold;
   border-radius: 20px;
   border: none;
   margin: auto;
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 button:hover {
   background-color: rgb(238, 149, 149);
@@ -153,6 +163,7 @@ a {
 #playagain {
   display: none;
 }
+
 #animation {
   display: none;
   width: 100%;
@@ -183,19 +194,35 @@ animation-fill-mode: forwards;}
  }
  #loss {
    width: 100%;
-   height: 100vh;
+   height: 530px;
    background-size: cover;
    background-position: center;
  }
  #animation {
    width: 100%;
-   height: 520px;
+   height: 530px;
+ }
+ .startpage_box {
+   margin: auto;
  }
 }
 
 @media screen and (min-width: 1024px) {
  #container_start {
    background-image:url('img/background_1200.jpg');
+}
+button {
+  font-size: 1.7em;
+  margin: 5px;
+  padding: 20px;
+  font-weight: bold;
+  margin: auto;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+h2 {
+  font-size: 3em;
 }
 .column1 {
   flex: 60%;
@@ -217,8 +244,7 @@ animation-fill-mode: forwards;}
   margin: auto;
   display: flex;
   justify-content: center;
-  margin-top: 10%;
-
+  margin-top: 5%;
 }
 #loss {
   width: 100%;
@@ -226,7 +252,14 @@ animation-fill-mode: forwards;}
   background-size: cover;
   background-position: center;
 }
-
+#logogame {
+  margin: auto;
+  padding: 40px 20px 40px 20px;
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+}
 #animation {
   width: 100%;
   height: 100vh;
@@ -236,9 +269,16 @@ animation-fill-mode: forwards;}
   width: 100%;
   height: 100vh;
   float: left;
+  border-left: 10px double grey;
+  border-top: none;
+  padding: 10px 50px 50px 50px;
+  line-height: 1.2;
 }
 .container_game {
   display: flex;
   flex-wrap: wrap;
+}
+.startpage_box {
+  margin: auto;
 }
 }

@@ -31,12 +31,12 @@ const cardsArray = [{
     'img': 'img/donut8.jpg',
   }];
 
-let count = 0;
-let firstSelect = 0;
-let secondSelect = 0;
-let delay = 1100;
+var count = 0;
+var firstSelect = 0;
+var secondSelect = 0;
+var delay = 1100;
 var timeleft = 30;
-
+var myScore = 0;
 
 const game = document.getElementById('game'); // Grab the div with an id of root
 const grid = document.createElement('section'); // Create a section with a class of grid
@@ -84,6 +84,7 @@ grid.addEventListener('click', function (event) {  // Add event listener to grid
         setTimeout(resetGuesses, delay)
         gameArray--;
         gameArray--;
+        score()
      } else {
         setTimeout(resetGuesses, delay)
      }
@@ -95,10 +96,11 @@ grid.addEventListener('click', function (event) {  // Add event listener to grid
       game.style.display = "none";
       document.getElementById("animation").style.display = "block";
        document.getElementById("playagain").style.display = "block";
-  }, 2000)
+  }, 1000)
 
 }
  });
+
 
  function match() {
    var selected = document.querySelectorAll('.selected');
@@ -114,15 +116,21 @@ grid.addEventListener('click', function (event) {  // Add event listener to grid
    var selected = document.querySelectorAll('.selected');
    selected.forEach(card => {
      card.classList.remove('selected');
+
  });
 }
+function score() {
+  let currentScore = timeleft;
+  myScore = myScore + currentScore;
+  document.getElementById("score").textContent = myScore;
+};
 
  function timer() {
    var downloadTimer = setInterval(function(){
      timeleft--;
      document.getElementById("countdowntimer").textContent = timeleft;
      if(timeleft <= 0) {
-       const timer = document.getElementById('timer').style.display = "none";
+       document.getElementById('timer').style.display = "none";
        clearInterval(downloadTimer);
        game.style.display = "none";
        document.getElementById("loss").style.display = "flex";
