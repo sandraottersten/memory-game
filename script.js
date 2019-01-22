@@ -1,36 +1,4 @@
-
-const cardsArray = [{
-    'id': 1,
-    'img': 'img/donut1.jpg',
-  },
-  {
-    'id': 2,
-    'img': 'img/donut2.jpg',
-  },
-  {
-    'id': 3,
-    'img': 'img/donut3.jpg',
-  },
-  {
-    'id': 4,
-    'img': 'img/donut4.jpg',
-  },
-  {
-    'id': 5,
-    'img': 'img/donut5.jpg',
-  },
-  {
-    'id': 6,
-    'img': 'img/donut6.jpg',
-  },
-  {
-    'id': 7,
-    'img': 'img/donut7.jpg',
-  },
-  {
-    'id': 8,
-    'img': 'img/donut8.jpg',
-  }];
+import {cardsArray} from "./cards.js"
 
 var count = 0;
 var firstSelect = 0;
@@ -40,6 +8,7 @@ var myScore = 0;
 var timeleft = 60;
 var message = ["Congrats! They are all yours!", "Time is out <br> The cookie monster ate them all!"];
 
+console.log('cardsArray')
 // Create a section with a classname and append it to game div
 const game = document.getElementById('game');
 const grid = document.createElement('section');
