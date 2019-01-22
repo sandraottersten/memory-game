@@ -34,8 +34,8 @@ const cardsArray = [{
 var count = 0;
 var firstSelect = 0;
 var secondSelect = 0;
-var delay = 1100;
-var timeleft = 30;
+var delay = 1000;
+var timeleft = 60;
 var myScore = 0;
 
 const game = document.getElementById('game'); // Grab the div with an id of root
@@ -44,6 +44,7 @@ grid.setAttribute('class', 'grid');
 
 game.appendChild(grid); // Append the grid section to the game div
 let gameGrid = cardsArray.concat(cardsArray); // Duplicate array to create a match for each card
+shuffleArray(gameGrid);
 var gameArray = gameGrid.length;
 
 gameGrid.forEach(item => {
@@ -65,23 +66,31 @@ gameGrid.forEach(item => {
 
 timer()
 
-grid.addEventListener('click', function (event) {  // Add event listener to grid
+document.getElementById('playagain').addEventListener("click", myFunction);
+function myFunction() {
+  location.reload();
+}
+
+grid.addEventListener('click', function (event) {
   let clicked = event.target;    // The event target is our clicked item
-  if (clicked.nodeName === 'SECTION') { return; }    // Do not allow the grid section itself to be selected; only select divs inside the grid
+
+  if (clicked.nodeName === 'SECTION' || clicked.parentNode.classList.contains('match')
+      || clicked.parentNode.classList.contains('selected')) { return; }    // Do not allow the grid section itself to be selected; only select divs inside the grid
+
   if (count<2) {
     count++;
      if(count === 1) {
        firstSelect = clicked.parentNode.dataset.id;   // Assign firstSelect
        clicked.parentNode.classList.add('selected');
-
      } else {
        secondSelect = clicked.parentNode.dataset.id; // Add selected class
        clicked.parentNode.classList.add('selected');  // Assign secondSelect
      }
+
      if (firstSelect && secondSelect) {
         if (firstSelect === secondSelect) {
-        setTimeout(match, delay)
-        setTimeout(resetGuesses, delay)
+        setTimeout(match, delay);
+        setTimeout(resetGuesses, delay);
         gameArray--;
         gameArray--;
         score()
@@ -92,16 +101,14 @@ grid.addEventListener('click', function (event) {  // Add event listener to grid
   }
   if (gameArray === 0) {
     var downloadTimer = setInterval(function(){
-      document.getElementById("winner").style.display = "block";
-      game.style.display = "none";
-      document.getElementById("animation").style.display = "block";
-       document.getElementById("playagain").style.display = "block";
-      document.getElementById("monsterAnimation").style.display = "none";
+      document.getElementById('winner').style.display = 'block';
+      game.style.display = 'none';
+      document.getElementById('animation').style.display = 'block';
+      document.getElementById('playagain').style.display = 'block';
+      document.getElementById('monsterAnimation').style.display = 'none';
   }, 1000)
-
 }
  });
-
 
  function match() {
    var selected = document.querySelectorAll('.selected');
@@ -123,27 +130,34 @@ grid.addEventListener('click', function (event) {  // Add event listener to grid
 function score() {
   let currentScore = timeleft;
   myScore = myScore + currentScore;
-  document.getElementById("score").textContent = myScore;
+  document.getElementById('score').textContent = myScore;
 };
 
  function timer() {
    var downloadTimer = setInterval(function(){
      timeleft--;
-     document.getElementById("countdowntimer").textContent = timeleft;
+     document.getElementById('countdowntimer').textContent = timeleft;
      if(timeleft === 10) {
-       document.getElementById('monsterAnimation').style.animationName = "example";
+       document.getElementById('monsterAnimation').style.animationName = 'monster';
      }
      if(timeleft <= 0) {
-       document.getElementById('timer').style.display = "none";
+       document.getElementById('timer').style.display = 'none';
        clearInterval(downloadTimer);
-       game.style.display = "none";
-       document.getElementById("loss").style.display = "flex";
-       document.getElementById("looser").style.display = "block";
-       document.getElementById("playagain").style.display = "block";
-       document.getElementById("monsterAnimation").style.display = "none";
+       game.style.display = 'none';
+       document.getElementById('loss').style.display = 'flex';
+       document.getElementById('looser').style.display = 'block';
+       document.getElementById('playagain').style.display = 'block';
+       document.getElementById('monsterAnimation').style.display = 'none';
       }
       if(gameArray === 0) {
         clearInterval(downloadTimer);
       }
     },1000);
  };
+
+ function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+  }
+}
