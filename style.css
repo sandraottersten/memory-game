@@ -101,7 +101,7 @@ transform-style: preserve-3d;
 }
 .startpage_box {
   background-color: white;
-  padding: 1em;
+  padding: 0.8em;
   border-radius: 10px;
   font-size: 1.5em;
   font-weight: bold;
@@ -155,12 +155,7 @@ a {
   background-position: center;
   background-size: cover;
 }
-#winner {
-  display: none;
-}
-#looser {
-  display: none;
-}
+
 #playagain {
   display: none;
 }
@@ -200,8 +195,6 @@ animation-fill-mode: forwards;}
   60%  {left:50px; bottom:40px;}
   100% {left:50px; bottom:-50px;}
 }
-
-
 
 
 @media screen and (min-width: 600px) {
