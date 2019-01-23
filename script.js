@@ -7,8 +7,16 @@ var delay = 1000;
 var myScore = 0;
 var timeleft = 60;
 var message = ["Congrats! They are all yours!", "Time is out <br> The cookie monster ate them all!"];
+var gameArray = 0;
 
-console.log('cardsArray')
+// Get the score from local storage, or start from 0
+if (localStorage.getItem('score')) {
+  var highScore = localStorage.getItem('score');
+} else {
+  var highScore = "0";
+};
+document.getElementById('points').innerHTML = `Your highscore: ${highScore}`;
+
 // Create a section with a classname and append it to game div
 const game = document.getElementById('game');
 const grid = document.createElement('section');
@@ -18,7 +26,7 @@ game.appendChild(grid);
 // Duplicate array to create a match for each card and shuffle it
 let gameGrid = cardsArray.concat(cardsArray);
 shuffleArray(gameGrid);
-var gameArray = gameGrid.length;
+gameArray = gameGrid.length;
 
  // For every item in array: create a card div, a class and a data-id
 gameGrid.forEach(item => {
@@ -49,7 +57,7 @@ grid.addEventListener('click', function (event) {
   if (clicked.nodeName === 'SECTION' || clicked.parentNode.classList.contains('match')
       || clicked.parentNode.classList.contains('selected')) { return; }
 
-// Limits number of clicks to 2, assigns first and second clicks and selected class
+// Limit number of clicks to 2, assigns first and second clicks and selected class
   if (count<2) {
     count++;
      if(count === 1) {
@@ -60,7 +68,7 @@ grid.addEventListener('click', function (event) {
        clicked.parentNode.classList.add('selected');
      }
 
-// Checks if both clicks are made, checks if they are a match
+// Check if both clicks are made, checks if they are a match
      if (firstSelect && secondSelect) {
         if (firstSelect === secondSelect) {
         setTimeout(match, delay);
@@ -76,15 +84,20 @@ grid.addEventListener('click', function (event) {
 // If all the cards are flipped the winner elements are activated
   if (gameArray === 0) {
     var downloadTimer = setInterval(function(){
+      if (highScore < myScore) {
+      localStorage.setItem('score', myScore);
+      highScore = localStorage.getItem('score');
+      document.getElementById('points').innerHTML = `Your highscore: ${highScore}`;
+      };
       document.getElementById('message').innerHTML = message[0];
       game.style.display = 'none';
       document.getElementById('animation').style.display = 'block';
       document.getElementById('playagain').style.display = 'block';
       document.getElementById('monsterAnimation').style.display = 'none';
+      document.getElementById('points').style.display = 'block';
     }, 1000)
   }
  });
-
  // Reload game when click playagain button
  document.getElementById('playagain').addEventListener("click", gameReload);
 
@@ -125,23 +138,29 @@ function gameReload() {
 // When timer is 10, animation is activated
 // When timer is 0, the looser elements are activated
 function timer() {
-  var downloadTimer = setInterval(function(){
+  var gameTimer = setInterval(function(){
     timeleft--;
     document.getElementById('countdowntimer').textContent = timeleft;
     if(timeleft === 10) {
       document.getElementById('monsterAnimation').style.animationName = 'monster';
     }
     if(timeleft <= 0) {
+      if (highScore < myScore) {
+      localStorage.setItem('score', myScore);
+      highScore = localStorage.getItem('score');
+      document.getElementById('points').innerHTML = `Your highscore: ${highScore}`;
+      };
       document.getElementById('timer').style.display = 'none';
-      clearInterval(downloadTimer);
+      clearInterval(gameTimer);
       game.style.display = 'none';
       document.getElementById('loss').style.display = 'flex';
       document.getElementById('message').innerHTML = message[1];
       document.getElementById('playagain').style.display = 'block';
       document.getElementById('monsterAnimation').style.display = 'none';
+      document.getElementById('points').style.display = 'block';
      }
      if(gameArray === 0) {
-       clearInterval(downloadTimer);
+       clearInterval(gameTimer);
      }
    },1000);
 };
