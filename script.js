@@ -1,3 +1,31 @@
+const fs = require('fs');
+const http = require('http');
+const port = process.env.PORT || 3000;
+
+var path = './webbpage.txt';
+var options = {
+  encoding: 'utf8',
+  flag: 'r'
+};
+
+fs.readFile(path, options, (err, data) => {
+  if (err) {
+    console.error(err);
+  }
+  else {
+    // Starta en server och skicka upp den inlästa filen dit.
+    var server = http.createServer((req, res) => {
+      res.setHeader("Content-Type", "text/html; charset=utf-8");
+      res.write(data);
+      res.end();
+    })
+    server.listen(port, () => {
+      console.log(`Server running at ${port}`);
+    })
+  }
+})
+
+
 import {cardsArray} from "./cards.js"
 
 var count = 0;
@@ -55,7 +83,7 @@ grid.addEventListener('click', function (event) {
 
 // Do not allow the grid section itself to be selected, or cards which are already selected
   if (clicked.nodeName === 'SECTION' || clicked.parentNode.classList.contains('match')
-      || clicked.parentNode.classList.contains('selected')) { return; }
+      || clicked.parentNode.classList.contains('selected') || clicked.parentNode.classList.contains('grid')) { return; }
 
 // Limit number of clicks to 2, assigns first and second clicks and selected class
   if (count<2) {

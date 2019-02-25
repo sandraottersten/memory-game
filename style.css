@@ -101,9 +101,9 @@ transform-style: preserve-3d;
 }
 .startpage_box {
   background-color: white;
-  padding: 0.8em;
+  padding: 0.7em;
   border-radius: 10px;
-  font-size: 1.5em;
+  font-size: 1.4em;
   font-weight: bold;
   text-align: center;
   margin: 15px;
@@ -165,6 +165,7 @@ a {
   margin: 0;
   padding: 10px;
   color: rgb(237, 97, 97);
+  font-size: 1.5em;
 }
 #animation {
   display: none;
