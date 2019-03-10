@@ -1,31 +1,3 @@
-const fs = require('fs');
-const http = require('http');
-const port = process.env.PORT || 3000;
-
-var path = './webbpage.txt';
-var options = {
-  encoding: 'utf8',
-  flag: 'r'
-};
-
-fs.readFile(path, options, (err, data) => {
-  if (err) {
-    console.error(err);
-  }
-  else {
-    // Starta en server och skicka upp den inlästa filen dit.
-    var server = http.createServer((req, res) => {
-      res.setHeader("Content-Type", "text/html; charset=utf-8");
-      res.write(data);
-      res.end();
-    })
-    server.listen(port, () => {
-      console.log(`Server running at ${port}`);
-    })
-  }
-})
-
-
 import {cardsArray} from "./cards.js"
 
 var count = 0;
@@ -33,7 +5,7 @@ var firstSelect = 0;
 var secondSelect = 0;
 var delay = 1000;
 var myScore = 0;
-var timeleft = 60;
+var timeleft = 20;
 var message = ["Congrats! They are all yours!", "Time is out <br> The cookie monster ate them all!"];
 var gameArray = 0;
 
